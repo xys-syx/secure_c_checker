@@ -12,7 +12,7 @@ class Checker:
 
         self.rules = [rule() for rule in rules]
 
-    def run(self, ast):
+    def run(self, ast, code=None, filename="<unknown>"):
         """
         Run Inspector: Applies all rule inspections to the AST.
         Returns a list of all violations (each violation is a dictionary with line number, rule number, description).
@@ -22,6 +22,11 @@ class Checker:
             return results
 
         for rule in self.rules:
-            issues = rule.check(ast)
-            results.extend(issues)
+            # issues = rule.check(ast)
+            # results.extend(issues)
+            if hasattr(rule, "analyze") and code:
+                rule.analyze(code, filename)
+            if hasattr(rule, "check") and ast:
+                rule.check(ast, filename)
+            results.extend(rule.get_violations())
         return results
