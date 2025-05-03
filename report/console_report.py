@@ -11,5 +11,5 @@ class ConsoleReporter:
         for issue in violations:
             line = issue.get("line")
             rule = issue.get("rule")
-            description = issue.get("description")
+            description = issue.get("description") or issue.get("message")
             print(f"Line {line}: [{rule}] {description}")
