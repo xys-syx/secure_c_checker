@@ -17,10 +17,6 @@ class RuleNoDeprecated(Rule):
         self.pattern = re.compile(r'\bgets\s*\(')
 
     # def check(self, ast):
-    #     """
-    #     Checks if the gets() function was called in the given AST.
-    #     Returns a list of violations, each containing the line number, rule number and violation description.
-    #     """
     #     issues = []
 
     #     class FuncCallVisitor(NodeVisitor):
