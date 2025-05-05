@@ -1,6 +1,7 @@
 import argparse
 from pathlib import Path                     
 from parser import c_parser
+from parser.c_parser import CParser
 from checker import checker
 from report import console_report, json_report
 from core.rules import misra, cert
@@ -25,8 +26,9 @@ def main():
     src_path = Path(args.file)
     with src_path.open(encoding="utf-8") as f:
         code = f.read()
-
-    c_ast = c_parser.CParser().parse_text(code)
+    #_parser = c_parser.CParser()
+    c_ast = CParser().parse_text(code)
+    #tainted_vars_set = _parser.get_tainted_vars()
 
     selected_rules = []
     if args.misra:
