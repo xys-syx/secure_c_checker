@@ -1,17 +1,11 @@
-"""
-CERT rule example: Do not use deprecated function gets() 
-(Corresponds to CERT MSC24-C: Do not use deprecated or obsolete functions &#8203;:contentReference[oaicite:5]{index=5})
-"""
 import re
 from core.rule import Rule
 from pycparser.c_ast import NodeVisitor, ID
 
-
-class RuleNoDeprecated(Rule):
-    """CERT Rule MSC24-C: Do not call deprecated functions (e.g. gets)"""
+class MSC24C(Rule):
     def __init__(self):
         super().__init__()
-        self.id = "CERT MSC24-C"
+        self.id = "MSC24-C"
         self.name = "Forbit using deprecated function"
         self.description = "Do not call deprecated functions gets()"
         self.pattern = re.compile(r'\bgets\s*\(')

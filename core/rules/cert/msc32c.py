@@ -6,11 +6,9 @@ class MSC32C(Rule):
         super().__init__()
         self.id = self.rule_id = "MSC32-C"
         self.name = "Properly seed pseudorandom number generators"
-        self._violations = []  # collected violations
-        # PRNG function sets
+        self._violations = []
         self._rand_funcs = {"rand", "random"}
         self._seed_funcs = {"srand", "srandom"}
-        # Severity levels for violation categories
         self._severity_map = {
             "UNSEEDED": "HIGH",
             "CONST-SEED": "HIGH",
